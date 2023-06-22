@@ -4,6 +4,8 @@ import {
 } from './lexicon/types/com/atproto/sync/subscribeRepos'
 import { FirehoseSubscriptionBase, getOpsByType } from './util/subscription'
 
+import {approvedAuthorsList} from './util/queerCoded/lookupTables'
+
 export class FirehoseSubscription extends FirehoseSubscriptionBase {
   async handleEvent(evt: RepoEvent) {
     if (!isCommit(evt)) return
@@ -18,15 +20,17 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
     //   console.log(post)
     // }
 
+    console.log(ops.posts.creates)
+
     const postsToDelete = ops.posts.deletes.map((del) => del.uri)
     const postsToCreate = ops.posts.creates
       .filter((create) => {
-        // only alf-related posts
-        console.log(create.author)
-        return create.record.text.toLowerCase().includes('alf')
+        let flag = false
+        if(approvedAuthorsList.includes(create.author)) flag = true
+        return flag
+        // return create.record.text.toLowerCase().includes('alf')
       })
       .map((create) => {
-        // map alf-related posts to a db row
         return {
           uri: create.uri,
           cid: create.cid,
