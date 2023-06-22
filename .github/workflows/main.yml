@@ -15,6 +15,7 @@ jobs:
 
   deploy:
     runs-on: self-hosted
+    needs: build
     steps:
       - name: Kill old Feed Generator
         run: yarn start
