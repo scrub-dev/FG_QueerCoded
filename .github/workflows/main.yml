@@ -3,7 +3,7 @@ name: Deploy to Loki
 
 on:
   push:
-    branches: [ live ]
+    branches: [ main ]
   
   workflow_dispatch:
   
@@ -12,4 +12,3 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Kill old Feed Generator
-      run: 
