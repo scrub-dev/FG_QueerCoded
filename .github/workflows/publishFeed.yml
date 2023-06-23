@@ -1,0 +1,10 @@
+name: Publish Feed Information
+
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: self-hosted
+    needs: build
+    steps:
+      run: ts-node scripts/publishFeedGen.ts
