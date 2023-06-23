@@ -19,10 +19,5 @@ jobs:
     runs-on: self-hosted
     needs: build
     steps:
-      - name: Stopping Old PM2 Node Process (if there is one)
-        run: |
-          pm2 stop FG_Queer_Coded 2>/dev/null
-          pm2 delete FG_Queer_Coded 2>/dev/null
-
       - name: Start PM2 Node Process
-        run: pm2 start dist/index.js --name FG_Queer_Coded
+        run: pm2 startOrGracefulReload dist/index.js --name FG_Queer_Coded
