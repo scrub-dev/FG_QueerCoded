@@ -1,0 +1,11 @@
+name: Stop PM2 Process
+
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: self-hosted
+    needs: build
+    steps:
+      - name: Stop PM2 Node Process
+        run: pm2 stop FG_Queer_Coded
