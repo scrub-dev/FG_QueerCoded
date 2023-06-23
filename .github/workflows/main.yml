@@ -17,6 +17,10 @@ jobs:
     steps:
       - name: Print CWD
         run: ls
+
+      - name: Does Yarn exist
+        run: yarn
+        run: yarn -h
       - name: Print Working Comands
         run: yarn run
       - name: Start yarn
