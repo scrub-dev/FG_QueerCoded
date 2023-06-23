@@ -11,16 +11,9 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
     if (!isCommit(evt)) return
     const ops = await getOpsByType(evt)
 
-    // This logs the text of every post off the firehose.
-    // Just for fun :)
-    // Delete before actually using
-
-
-    // for (const post of ops.posts.creates) {
-    //   console.log(post)
-    // }
-
-    console.log(ops.posts.creates)
+    for (const post of ops.posts.creates) {
+      console.log(post)
+    }
 
     const postsToDelete = ops.posts.deletes.map((del) => del.uri)
     const postsToCreate = ops.posts.creates

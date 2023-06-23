@@ -3,7 +3,8 @@ import { QueryParams } from '../lexicon/types/app/bsky/feed/getFeedSkeleton'
 import { AppContext } from '../config'
 
 // max 15 chars
-export const shortname : string = process.env.FEED_RECORD_NAME || "queer-coded"
+export const shortname : string = process.env.FEED_RECORD_NAME || "queercoded"
+export const uri = 'at://did:plc:kcgqbkp3uuk3eesuzvf4s6u6/app.bsky.feed.generator/queercoded'
 
 export const handler = async (ctx: AppContext, params: QueryParams) => {
   let builder = ctx.db
