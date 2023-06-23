@@ -11,8 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build Feed Generator
-        run: yarn build
+      # - name: Build Feed Generator
+      #   run: yarn build
 
   deploy:
     runs-on: self-hosted
