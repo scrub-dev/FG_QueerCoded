@@ -4,9 +4,7 @@ name: Deploy to Loki
 on:
   push:
     branches: [ main ]
-  
   workflow_dispatch:
-  
 jobs:
   build:
     runs-on: self-hosted
@@ -17,5 +15,5 @@ jobs:
     runs-on: self-hosted
     needs: build
     steps:
-      - name: Kill old Feed Generator
+      - name: Run
         run: yarn start
