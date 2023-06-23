@@ -7,4 +7,5 @@ jobs:
     runs-on: self-hosted
     needs: build
     steps:
-      run: ts-node scripts/publishFeedGen.ts
+      - name: Run publishFeedGen Script
+        run: ts-node scripts/publishFeedGen.ts
