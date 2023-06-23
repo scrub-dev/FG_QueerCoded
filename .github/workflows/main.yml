@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Build Feed Generator
+        run: yarn build
+
   deploy:
     runs-on: self-hosted
     needs: build
@@ -19,9 +22,11 @@ jobs:
         run: ls
 
       - name: Does Yarn exist
-        run: yarn
-        run: yarn -h
+        run: |
+          yarn
+          yarn -h
       - name: Print Working Comands
         run: yarn run
+
       - name: Start yarn
         run: yar Start
