@@ -52,8 +52,8 @@ jobs:
         run: |
           echo SSL_CHALLENGE_LOC=${{secrets.SSL_CHALLENGE_LOC}} >> .env
           echo SSL_CHALLENGE_STRING=${{secrets.SSL_CHALLENGE_STRING}} >> .env
-      # - name: Setup reverse proxy
-      #   run: caddy run
+      - name: Setup reverse proxy
+        run: caddy run
 
 
   deploy:
