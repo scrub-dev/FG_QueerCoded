@@ -3,13 +3,8 @@ name: Publish Feed Information
 on:
   workflow_dispatch:
 jobs:
-  deploy:
+  publish:
     runs-on: self-hosted
-    needs: build
     steps:
-      - name: Creating Local Variables
-        run: |
-          touch .env
-          echo
       - name: Run publishFeedGen Script
         run: ts-node scripts/publishFeedGen.ts
