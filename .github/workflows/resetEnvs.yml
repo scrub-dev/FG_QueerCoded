@@ -23,7 +23,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: populate environment file
-      run: |
+        run: |
           echo FEED_HANDLE="${{secrets.FEED_HANDLE}}" >> .env
           echo FEED_PASSWD="${{secrets.FEED_PASSWD}}" >> .env
           echo FEED_RECORD_NAME="${{secrets.FEED_RECORD_NAME}}" >> .env
