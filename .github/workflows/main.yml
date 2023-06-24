@@ -56,5 +56,10 @@ jobs:
     runs-on: self-hosted
     needs: setup
     steps:
+
+      - name: Stop if one is already running
+        if: pm2 pid FG_Queercode
       - name: Start PM2 Node Process
-        run: pm2 start dist/index.js --name FG_Queer_Coded -f
+        run: |
+        pm2 delete -s FG_Queercoded || :
+        pm2 start dist/index.js --name FG_Queercoded
