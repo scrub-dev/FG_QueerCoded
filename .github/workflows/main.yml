@@ -49,7 +49,7 @@ jobs:
           echo FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY=${{secrets.FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY}}>> .env
   deploy:
     runs-on: self-hosted
-    needs: build, setup
+    needs: setup
     steps:
       - name: Start PM2 Node Process
         run: pm2 startOrGracefulReload dist/index.js --name FG_Queer_Coded
