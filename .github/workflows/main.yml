@@ -30,7 +30,6 @@ jobs:
         run: |
           touch .env
           ls -la
-
       - name: Create Feed Variables
         run: |
           echo FEED_HANDLE="${{secrets.FEED_HANDLE}}" >> .env
@@ -49,16 +48,11 @@ jobs:
           echo FEEDGEN_HOSTNAME="${{secrets.FEEDGEN_HOSTNAME}}" >> .env
           echo FEEDGEN_PUBLISHER_DID="${{secrets.FEEDGEN_PUBLISHER_DID}}" >> .env
           echo FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY="${{secrets.FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY}}" >> .env
-      - name: testing env file
-        run: cat .env
 
   deploy:
     runs-on: self-hosted
     needs: setup
     steps:
-
-      - name: Stop if one is already running
-        if: pm2 pid FG_Queercode
       - name: Start PM2 Node Process
         run: |
           pm2 delete -s FG_Queercoded || ':'
