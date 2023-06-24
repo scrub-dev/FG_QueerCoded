@@ -31,22 +31,22 @@ jobs:
 
       - name: Create Feed Variables
         run: |
-          echo FEED_HANDLE=${{secrets.FEED_HANDLE}}>> .env
-          echo FEED_PASSWD=${{secrets.FEED_PASSWD}}>> .env
-          echo FEED_RECORD_NAME=${{secrets.FEED_RECORD_NAME}}>> .env
-          echo FEED_DISPLAY_NAME=${{secrets.FEED_DISPLAY_NAME}}>> .env
-          echo FEED_DESCRIPTION=${{secrets.FEED_DESCRIPTION}}>> .env
-          echo FEED_AVATAR_PATH=${{secrets.FEED_AVATAR_PATH}}>> .env
+          echo FEED_HANDLE=${{secrets.FEED_HANDLE}} >> .env
+          echo FEED_PASSWD=${{secrets.FEED_PASSWD}} >> .env
+          echo FEED_RECORD_NAME=${{secrets.FEED_RECORD_NAME}} >> .env
+          echo FEED_DISPLAY_NAME=${{secrets.FEED_DISPLAY_NAME}} >> .env
+          echo FEED_DESCRIPTION=${{secrets.FEED_DESCRIPTION}} >> .env
+          echo FEED_AVATAR_PATH=${{secrets.FEED_AVATAR_PATH}} >> .env
 
       - name: Create App Variables
         run: |
-          echo FEEDGEN_PORT=${{secrets.FEEDGEN_PORT}}>> .env
-          echo FEEDGEN_LISTENHOST=${{secrets.FEEDGEN_LISTENHOST}}>> .env
-          echo FEEDGEN_SQLITE_LOCATION=${{secrets.FEEDGEN_SQLITE_LOCATION}}>> .env
-          echo FEEDGEN_SUBSCRIPTION_ENDPOINT=${{secrets.FEEDGEN_SUBSCRIPTION_ENDPOINT}}>> .env
-          echo FEEDGEN_HOSTNAME=${{secrets.FEEDGEN_HOSTNAME}}>> .env
-          echo FEEDGEN_PUBLISHER_DID=${{secrets.FEEDGEN_PUBLISHER_DID}}>> .env
-          echo FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY=${{secrets.FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY}}>> .env
+          echo FEEDGEN_PORT=${{secrets.FEEDGEN_PORT}} >> .env
+          echo FEEDGEN_LISTENHOST=${{secrets.FEEDGEN_LISTENHOST}} >> .env
+          echo FEEDGEN_SQLITE_LOCATION=${{secrets.FEEDGEN_SQLITE_LOCATION}} >> .env
+          echo FEEDGEN_SUBSCRIPTION_ENDPOINT=${{secrets.FEEDGEN_SUBSCRIPTION_ENDPOINT}} >> .env
+          echo FEEDGEN_HOSTNAME=${{secrets.FEEDGEN_HOSTNAME}} >> .env
+          echo FEEDGEN_PUBLISHER_DID=${{secrets.FEEDGEN_PUBLISHER_DID}} >> .env
+          echo FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY=${{secrets.FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY}} >> .env
   deploy:
     runs-on: self-hosted
     needs: setup
