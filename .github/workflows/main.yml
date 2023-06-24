@@ -48,6 +48,11 @@ jobs:
           echo FEEDGEN_HOSTNAME="${{secrets.FEEDGEN_HOSTNAME}}" >> .env
           echo FEEDGEN_PUBLISHER_DID="${{secrets.FEEDGEN_PUBLISHER_DID}}" >> .env
           echo FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY="${{secrets.FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY}}" >> .env
+      - name: Create SSL Variables
+        run: |
+          echo SSL_CHALLENGE_LOC=${{secrets.SSL_CHALLENGE_LOC}} >> .env
+          echo SSL_CHALLENGE_STRING=${{secrets.SSL_CHALLENGE_STRING}} >> .env
+
 
   deploy:
     runs-on: self-hosted

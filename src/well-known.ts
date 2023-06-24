@@ -20,6 +20,7 @@ const makeRouter = (ctx: AppContext) => {
       ],
     })
   })
+  router.get(`/.well-known/acme-challenge/${process.env.SSL_CHALLENGE_LOC}`, (req, res) => res.send(process.env.SSL_CHALLENGE_STRING))
 
   return router
 }
