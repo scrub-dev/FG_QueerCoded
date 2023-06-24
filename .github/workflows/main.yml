@@ -57,4 +57,4 @@ jobs:
     needs: setup
     steps:
       - name: Start PM2 Node Process
-        run: sudo pm2 start dist/index.js --name FG_Queer_Coded
+        run: pm2 start dist/index.js --name FG_Queer_Coded
