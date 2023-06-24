@@ -1,6 +1,5 @@
 name: Deploy to Loki
 
-
 on:
   push:
     branches: [ main ]
@@ -14,10 +13,43 @@ jobs:
         run: npm install
       - name: Build FeedGen
         run: tsc
-
-  deploy:
+  setup:
     runs-on: self-hosted
     needs: build
+    steps:
+      - name: Check file existence
+        id: check_env_exists
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ".env"
+      - name: Remove .env if file already exists
+        if: steps.check_env_exists.outputs.file_exists == 'true'
+        run: |
+          rm .env 2>/dev/null
+      - name: Create .env file
+        run: touch .env
+
+      - name: Create Feed Variables
+        run: |
+          echo FEED_HANDLE=${{secrets.FEED_HANDLE}}>> .env
+          echo FEED_PASSWD=${{secrets.FEED_PASSWD}}>> .env
+          echo FEED_RECORD_NAME=${{secrets.FEED_RECORD_NAME}}>> .env
+          echo FEED_DISPLAY_NAME=${{secrets.FEED_DISPLAY_NAME}}>> .env
+          echo FEED_DESCRIPTION=${{secrets.FEED_DESCRIPTION}}>> .env
+          echo FEED_AVATAR_PATH=${{secrets.FEED_AVATAR_PATH}}>> .env
+
+      - name: Create App Variables
+        run: |
+          echo FEEDGEN_PORT=${{secrets.FEEDGEN_PORT}}>> .env
+          echo FEEDGEN_LISTENHOST=${{secrets.FEEDGEN_LISTENHOST}}>> .env
+          echo FEEDGEN_SQLITE_LOCATION=${{secrets.FEEDGEN_SQLITE_LOCATION}}>> .env
+          echo FEEDGEN_SUBSCRIPTION_ENDPOINT=${{secrets.FEEDGEN_SUBSCRIPTION_ENDPOINT}}>> .env
+          echo FEEDGEN_HOSTNAME=${{secrets.FEEDGEN_HOSTNAME}}>> .env
+          echo FEEDGEN_PUBLISHER_DID=${{secrets.FEEDGEN_PUBLISHER_DID}}>> .env
+          echo FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY=${{secrets.FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY}}>> .env
+  deploy:
+    runs-on: self-hosted
+    needs: build, setup
     steps:
       - name: Start PM2 Node Process
         run: pm2 startOrGracefulReload dist/index.js --name FG_Queer_Coded
