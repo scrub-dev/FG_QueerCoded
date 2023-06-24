@@ -11,9 +11,9 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
     if (!isCommit(evt)) return
     const ops = await getOpsByType(evt)
 
-    for (const post of ops.posts.creates) {
-      console.log(post)
-    }
+    // for (const post of ops.posts.creates) {
+    //   console.log(post)
+    // }
 
     const postsToDelete = ops.posts.deletes.map((del) => del.uri)
     const postsToCreate = ops.posts.creates
