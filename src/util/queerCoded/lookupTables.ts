@@ -5,10 +5,13 @@ const approvedAuthorsList = [
         "did:plc:l7buhragfpktqopl7wdojhi3", // trans.bsky.social
         "did:plc:kkf4naxqmweop7dv4l2iqqf5", // aendra.bsky.social
         "did:plc:oav2ixis42pm5fqrqhp4ey3w", // andi.hellthread.vet
+        "did:plc:q6gjnaw2blty4crticxkmujt", // jaz.bsky.social
+        "did:plc:ntjycch57ky7j6h24pggmsr2", // dianna.social
+        "did:plc:by3jhwdqgbtrcc7q4tkkv3cf", // alice.bsky.social
     ]
 
 
-const postKeywords = []
+const postKeywords = ["queercoded"]
 
 const authorBioKeywords = []
 
