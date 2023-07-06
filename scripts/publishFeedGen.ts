@@ -9,7 +9,7 @@ const run = async () => {
   const password = process.env.FEED_PASSWD || ""
   const recordName = process.env.FEED_RECORD_NAME || ""
   const displayName = process.env.FEED_DISPLAY_NAME || ""
-  const description = process.env.FEED_DESCRIPTION + " | " + process.env.FEED_VERSION || ""
+  const description = process.env.FEED_DESCRIPTION || ""
   const avatar = process.env.FEED_AVATAR_PATH || ""
 
   // -------------------------------------
