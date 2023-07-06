@@ -6,8 +6,5 @@ jobs:
   publish:
     runs-on: self-hosted
     steps:
-      - name: Check Sanity
-        run: |
-          cat .env
       - name: Run publishFeedGen Script
         run: ts-node scripts/publishFeedGen.ts
