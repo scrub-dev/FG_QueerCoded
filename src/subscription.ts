@@ -4,7 +4,7 @@ import {
 } from './lexicon/types/com/atproto/sync/subscribeRepos'
 import { FirehoseSubscriptionBase, getOpsByType } from './util/subscription'
 
-import {approvedAuthorsList} from './util/queerCoded/lookupTables'
+import {approvedAuthorsList, postKeywords} from './util/queerCoded/lookupTables'
 
 export class FirehoseSubscription extends FirehoseSubscriptionBase {
   async handleEvent(evt: RepoEvent) {
@@ -19,9 +19,9 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
     const postsToCreate = ops.posts.creates
       .filter((create) => {
         let flag = false
-        if(approvedAuthorsList.includes(create.author)) flag = true
+        if(approvedAuthorsList.includes(create.author)) flag = true // User Mapping
+        if(create.record.text.toLowerCase().split(" ").includes("#"+postKeywords[0])) flag = true //#queercoded
         return flag
-        // return create.record.text.toLowerCase().includes('alf')
       })
       .map((create) => {
         return {
