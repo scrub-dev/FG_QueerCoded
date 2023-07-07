@@ -15,11 +15,13 @@ jobs:
         run: |
           rm .env 2>/dev/null
   create_new:
+    needs: remove_existing
     runs-on: self-hosted
     steps:
       - name: Create .env file
         run: touch .env
   populate:
+    needs: create_new
     runs-on: self-hosted
     steps:
       - name: populate environment file
